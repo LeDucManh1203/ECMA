@@ -3,7 +3,8 @@ import Header from "../component/Header";
 const AboutPage = () => {
     return `
     ${Header()}
-    
-    About Page`;
+    <h1>About Page</h1>
+    `;
 };
+
 export default AboutPage;

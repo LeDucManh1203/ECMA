@@ -1,7 +1,9 @@
+import Header from "../component/Header";
+
 const PostsPage = () => {
     return `
     ${Header()}
     
-    Posts Page`;
+   <h1>Posts Page</h1> `;
 };
 export default PostsPage;
