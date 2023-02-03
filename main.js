@@ -2,6 +2,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { render, router } from "./lib";
 import AboutPage from "./pages/about";
 import AdminProjectsPage from "./pages/admin/projects";
+import AdminAddProjectsPage from "./pages/admin/projects-add";
+// import AdminAddProjectsPage from "./pages/admin/projects-add";
 import ContactPage from "./pages/contact";
 import DetailProjectPage from "./pages/detail-project";
 import HomePage from "./pages/home";
@@ -19,6 +21,8 @@ router.on("/projects", () => render(ProjectsPage, app));
 router.on("/project/:id", (params) => render( () => DetailProjectPage(params), app));
 router.on("/posts", () => render(PostsPage, app));
 router.notFound(() => render(NotFound, app));
-router.on("/admin/projects", () => render(AdminProjectsPage, app));
 
+// admin page
+router.on("/admin/projects", () => render(AdminProjectsPage, app));
+router.on("/admin/projects/add",() => render(AdminAddProjectsPage, app));
 router.resolve();
