@@ -1,54 +1,68 @@
 import { projects } from "../../data";
-import { useEffect, useState } from "../../lib";
+import { useState, useEffect } from "../../lib";
 
 const AdminProjectsPage = () => {
-    /**
-     * Các bước thực hiện:
-     * - Bước 1: Thiết lập state
-     * - Bước 2: Lấy dữ liệu từ state và hiển thị ra ngoài
-     * - Bước 3:
-     *  + Sử dụng useEffect
-     *  + Lắng nghe sự kiện click vào nút remove
-     */
-    // Thiết lập state
-    const [data, setData] = useState(projects);
+    // Bước 1: Khởi tạo biến data và hàm setData, giá trị là 1 mảng rỗng
+    const [data, setData] = useState([]);
+
+    // Bước 3: Lấy dữ liệu từ localStorage và gán vào biến data
+    useEffect(() => {
+        const projects = JSON.parse(localStorage.getItem("projects")) || [];
+        setData(projects);
+    }, []);
 
     useEffect(() => {
         const btns = document.querySelectorAll(".btn-remove");
         for (let btn of btns) {
-            const id = btn.dataset.id;
+            // Viết sự kiện cho từng button remove
             btn.addEventListener("click", function () {
-                setData(data.filter((project) => project.id != id));
+                // Lấy id từ data-id của button
+                const id = btn.dataset.id;
+                // Lọc ra các phần tử có id khác với id của button
+                const newProjects = data.filter((project) => project.id != id);
+
+                // Lưu vào localStorage
+                localStorage.setItem("projects", JSON.stringify(newProjects));
+
+                // Gán lại giá trị cho biến data
+                setData(newProjects);
             });
         }
     });
-
-    return `<div>
-
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Name</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                ${data
-                    .map((project, index) => {
-                        return `
+    // Bước 2: Hiển thị ra ngoài màn hình
+    return `<div class="container pt-5">
+                <h1>Quản lý dự án</h1>
+                <button class="btn btn-success m-2 "><a class="link-warning text-decoration-none" href="/admin/projects/add">Thêm</a></button>
+                <table class="table table-bordered">
+                    <thead>
                         <tr>
-                            <td>${index + 1}</td>
-                            <td>${project.name}</td>
-                            <td width="150"><button class="btn btn-remove btn-danger" data-id="${
-                                project.id
-                            }">Remove</button></td>
+                            <th>STT</th>
+                            <th>Tên dự án</th>
+                            <th></th>
                         </tr>
-                    `;
-                    })
-                    .join("")}
-            </tbody>
-        </table>
+                    </thead>
+                    <tbody>
+                        ${data
+                            .map(function (project, index) {
+                                return `
+                                <tr>
+                                    <td>${index + 1}</td>
+                                    <td>${project.name}</td>
+                                    <td>
+                                        <button data-id="${
+                                            project.id
+                                        }" class="btn btn-danger btn-remove">
+                                            Xóa
+                                        </button>
+                                        <a class="btn btn-info" href="/admin/projects/${project.id}/edit">Sửa</a>
+                                    </td>
+                                </tr>
+                            `;
+                            })
+                            .join("")}
+                        
+                    </tbody>
+                </table>
     </div>`;
 };
 

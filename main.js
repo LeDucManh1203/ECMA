@@ -3,6 +3,7 @@ import { render, router } from "./lib";
 import AboutPage from "./pages/about";
 import AdminProjectsPage from "./pages/admin/projects";
 import AdminAddProjectsPage from "./pages/admin/projects-add";
+import AdminEditProjectPage from "./pages/admin/projects-edit";
 // import AdminAddProjectsPage from "./pages/admin/projects-add";
 import ContactPage from "./pages/contact";
 import DetailProjectPage from "./pages/detail-project";
@@ -18,11 +19,12 @@ router.on("/", () => render(HomePage, app));
 router.on("/about", () => render(AboutPage, app));
 router.on("/contact", () => render(ContactPage, app));
 router.on("/projects", () => render(ProjectsPage, app));
-router.on("/project/:id", (params) => render( () => DetailProjectPage(params), app));
+router.on("/project/:id", (params) => render(() => DetailProjectPage(params), app));
 router.on("/posts", () => render(PostsPage, app));
 router.notFound(() => render(NotFound, app));
 
 // admin page
 router.on("/admin/projects", () => render(AdminProjectsPage, app));
-router.on("/admin/projects/add",() => render(AdminAddProjectsPage, app));
+router.on("/admin/projects/add", () => render(AdminAddProjectsPage, app));
+router.on("/admin/projects/:id/edit", ({ data }) => render(() => AdminEditProjectPage(data), app));
 router.resolve();
