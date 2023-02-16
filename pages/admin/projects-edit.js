@@ -4,7 +4,6 @@ import { useEffect, router, useState } from "../../lib";
 const AdminEditProjectPage = ({ id }) => {
 
     const [project, setProjects] = useState({});
-
     // tìm project theo id
     // const currentProject = projects.find((project) => project.id == id);
 

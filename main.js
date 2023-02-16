@@ -7,13 +7,15 @@ import AdminProjectsPage from "./pages/admin/projects";
 import AdminAddProjectsPage from "./pages/admin/projects-add";
 import AdminEditProjectPage from "./pages/admin/projects-edit";
 //
-
 import ContactPage from "./pages/contact";
 import DetailProjectPage from "./pages/detail-project";
 import HomePage from "./pages/home";
 import NotFound from "./pages/not-found";
 import PostsPage from "./pages/posts";
 import ProjectsPage from "./pages/project";
+// phần demo lọc
+import CategoryPage from "./pages/category";
+import DetailCategoryPage from "./pages/category-detail";
 
 
 const app = document.querySelector("#app");
@@ -25,6 +27,8 @@ router.on("/contact", () => render(ContactPage, app));
 router.on("/projects", () => render(ProjectsPage, app));
 router.on("/project/:id", (params) => render(() => DetailProjectPage(params), app));
 router.on("/posts", () => render(PostsPage, app));
+router.on("/category", () => render(CategoryPage, app));
+router.on("/category/:id", ({data}) => render( () => DetailCategoryPage(data), app));
 router.notFound(() => render(NotFound, app));
 
 // admin page

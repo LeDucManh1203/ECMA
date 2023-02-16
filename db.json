@@ -2,16 +2,18 @@
   "projects": [
     {
       "name": "dự án 4",
-      "id": 2
+      "id": 2,
+      "categoryProjectId": 1
     },
     {
       "name": "dự án 3",
       "id": 3,
-      "categoryProjectId": 2
+      "categoryProjectId": 1
     },
     {
       "name": "dự án 1",
-      "id": 4
+      "id": 4,
+      "categoryProjectId": 2
     }
   ],
   "categoryProjects": [
