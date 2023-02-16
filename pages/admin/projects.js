@@ -1,15 +1,17 @@
-import { projects } from "../../data";
+// import { projects } from "../../data";
 import { useState, useEffect } from "../../lib";
 
 const AdminProjectsPage = () => {
     // Bước 1: Khởi tạo biến data và hàm setData, giá trị là 1 mảng rỗng
-    const [data, setData] = useState([]);
+    const [projects, setProjects] = useState([]);
 
     // Bước 3: Lấy dữ liệu từ localStorage và gán vào biến data
     useEffect(() => {
-        const projects = JSON.parse(localStorage.getItem("projects")) || [];
-        setData(projects);
+        fetch("http://localhost:3000/projects")
+            .then((response) => response.json())
+            .then(( data ) => setProjects(data));
     }, []);
+    // chức năng xóa
 
     useEffect(() => {
         const btns = document.querySelectorAll(".btn-remove");
@@ -19,13 +21,15 @@ const AdminProjectsPage = () => {
                 // Lấy id từ data-id của button
                 const id = btn.dataset.id;
                 // Lọc ra các phần tử có id khác với id của button
-                const newProjects = data.filter((project) => project.id != id);
-
-                // Lưu vào localStorage
-                localStorage.setItem("projects", JSON.stringify(newProjects));
-
-                // Gán lại giá trị cho biến data
-                setData(newProjects);
+                //=> chức năng xóa
+                fetch(`http://localhost:3000/projects/${id}`, {
+                    method: "DELETE",
+                }).then(() => {
+                    // lọc ra các phần tử có id khác với id của button 
+                    const newProjects = projects.filter((project) => project.id != id);
+                    // sau đó gán lại cho biến data
+                    setProjects(newProjects);
+                })
             });
         }
     });
@@ -42,24 +46,22 @@ const AdminProjectsPage = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        ${data
-                            .map(function (project, index) {
-                                return `
+                        ${projects
+            .map(function (project, index) {
+                return `
                                 <tr>
                                     <td>${index + 1}</td>
                                     <td>${project.name}</td>
                                     <td>
-                                        <button data-id="${
-                                            project.id
-                                        }" class="btn btn-danger btn-remove">
+                                        <button data-id="${project.id}" class="btn btn-danger btn-remove">
                                             Xóa
                                         </button>
                                         <a class="btn btn-info" href="/admin/projects/${project.id}/edit">Sửa</a>
                                     </td>
                                 </tr>
                             `;
-                            })
-                            .join("")}
+            })
+            .join("")}
                         
                     </tbody>
                 </table>

@@ -1,0 +1,27 @@
+{
+  "projects": [
+    {
+      "name": "dự án 4",
+      "id": 2
+    },
+    {
+      "name": "dự án 3",
+      "id": 3,
+      "categoryProjectId": 2
+    },
+    {
+      "name": "dự án 1",
+      "id": 4
+    }
+  ],
+  "categoryProjects": [
+    {
+      "id": 1,
+      "name": "HTML"
+    },
+    {
+      "id": 2,
+      "name": "Javascript"
+    }
+  ]
+}

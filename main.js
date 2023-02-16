@@ -1,16 +1,20 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { render, router } from "./lib";
 import AboutPage from "./pages/about";
+
+// phần admin
 import AdminProjectsPage from "./pages/admin/projects";
 import AdminAddProjectsPage from "./pages/admin/projects-add";
 import AdminEditProjectPage from "./pages/admin/projects-edit";
-// import AdminAddProjectsPage from "./pages/admin/projects-add";
+//
+
 import ContactPage from "./pages/contact";
 import DetailProjectPage from "./pages/detail-project";
 import HomePage from "./pages/home";
 import NotFound from "./pages/not-found";
 import PostsPage from "./pages/posts";
 import ProjectsPage from "./pages/project";
+
 
 const app = document.querySelector("#app");
 
