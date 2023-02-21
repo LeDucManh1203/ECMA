@@ -1,6 +1,6 @@
 // import { projects } from "../../data";
 import { useState, useEffect } from "../../lib";
-
+import ProjectGallery from "../../component/ProjectGallery";
 const AdminProjectsPage = () => {
     // Bước 1: Khởi tạo biến data và hàm setData, giá trị là 1 mảng rỗng
     const [projects, setProjects] = useState([]);
@@ -42,6 +42,7 @@ const AdminProjectsPage = () => {
                         <tr>
                             <th>STT</th>
                             <th>Tên dự án</th>
+                            <th>Ảnh</th>
                             <th></th>
                         </tr>
                     </thead>

@@ -29,7 +29,19 @@ router.on("/project/:id", (params) => render(() => DetailProjectPage(params), ap
 router.on("/posts", () => render(PostsPage, app));
 router.on("/category", () => render(CategoryPage, app));
 router.on("/category/:id", ({data}) => render( () => DetailCategoryPage(data), app));
+
+
 router.notFound(() => render(NotFound, app));
+
+
+
+
+
+
+
+
+
+
 
 // admin page
 router.on("/admin/projects", () => render(AdminProjectsPage, app));

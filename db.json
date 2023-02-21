@@ -14,6 +14,14 @@
       "name": "dự án 1",
       "id": 4,
       "categoryProjectId": 2
+    },
+    {
+      "name": "tom",
+      "gallrey": [
+        "https://res.cloudinary.com/dto9oatct/image/upload/v1676831790/ECMA/alue7mvt1bnvoxpkyeqh.jpg",
+        "https://res.cloudinary.com/dto9oatct/image/upload/v1676831790/ECMA/wbyg4kkj1t9ptdck37te.jpg"
+      ],
+      "id": 5
     }
   ],
   "categoryProjects": [

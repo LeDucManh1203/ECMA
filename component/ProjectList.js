@@ -5,7 +5,7 @@ const ProjectList = () => {
 ${projects
             .map((projects) => {
                 return `<div class="project-item">
-    <a href = "/project/${projects.id}">${projects.name}</a></div>`;
+    <a href = "/project/${projects.id}">List nhes ${projects.name}</a></div>`;
             })
             .join("")}
 </div>`;

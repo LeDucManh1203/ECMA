@@ -1,4 +1,4 @@
-import ProjectInfo from "../component/ProjectInfo";
+import projectInfo from "../component/ProjectInfo";
 import ProjectGallery from "../component/ProjectGallery";
 import { useEffect, useState } from "../lib";
 
@@ -19,7 +19,7 @@ const DetailCategoryPage = ({ id }) => {
                     category.projects
                         ? category.projects.map(
                               (item) => `
-                    <a href="/project/${item.id}">${item.name}</a>
+                    <a href="/project/${item.id}">p2 ${item.name}</a>
                 `
                           )
                         : ""

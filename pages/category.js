@@ -16,7 +16,7 @@ const CategoryPage = () => {
     <aside>Lọc theo</aside>
     ${category.map(
         (item)=>`
-        <a href="/category/${item.id}">${item.name}</a>
+        <a href="/category/${item.id}">p1${item.name}</a>
         `)}
     </div>
     `;

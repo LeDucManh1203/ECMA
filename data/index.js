@@ -12,7 +12,7 @@ const projects = [
         id: 3, name: "Du an tot nghiep",
         teams: [
             { id: 1, name: "Huyen" },
-            { id: 2, name: "Anh" },
+            {    id: 2, name: "Anh" },
             { id: 3, name: "Nhung" },
         ],
     },
